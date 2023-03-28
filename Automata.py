@@ -257,4 +257,30 @@ class Automata:
         print("| {:<4} | {:<7} | {:<10} |".format('Fila','Columna','Lexema'))    
         print('-'*31)
         for token in self.tabla_tokens:
-            print ("| {:<4} | {:<7} | {:<10} |".format(token.fila, token.columna, token.lexema))         
+            print ("| {:<4} | {:<7} | {:<10} |".format(token.fila, token.columna, token.lexema))
+
+    def imprimir_lexemas(self):
+        for token in self.tabla_tokens:
+            print(token.lexema)
+
+    def detectar_operacion(self):
+        for token in self.tabla_tokens:
+            if token.lexema == "Suma":
+                print("se encontro una suma")
+            elif token.lexema == "Resta":
+                print("se encontro una resta")
+            elif token.lexema == "Multiplicacion":
+                print("se encontro una multiplicacion")
+            elif token.lexema == "Division":
+                print("se encontro una division")
+            elif token.lexema == "Potencia":
+                print("se encontro una potencia")
+            elif token.lexema == "Raiz":
+                print("se encontro una raiz")
+            elif token.lexema == "Seno":
+                print("se encontro un seno")
+            elif token.lexema == "Coseno":
+                print("se encontro un coseno")
+            elif token.lexema == "Tangente":
+                print("se encontro una tangente")
+
