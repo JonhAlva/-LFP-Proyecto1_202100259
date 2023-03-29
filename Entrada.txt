@@ -34,7 +34,9 @@
         "Valor2":5.32,
     }
     "Texto":"Realizacion de Operaciones",
-    "Color-Fondo-Nodo":"Amarrilo",
+    "Color-Fondo-Nodo":"Amarillo",
     "Color-Fuente-Nodo":"Rojo",
     "Forma-Nodo":"Circulo"
 }
+
+SEXOOOOOOO

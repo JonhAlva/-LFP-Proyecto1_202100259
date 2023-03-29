@@ -62,10 +62,15 @@ def Limpiar():
 def GuardarComo():
     print("Guardado como...")
     entrada = Caja.get("1.0","end")
-    NewFile = filedialog.asksaveasfilename(filetype="/", title="Save as", filetypes=(("Text files","*.txt"),("json files", "*.json"),("all files","*.*")))
-    NewFile = open("C:/Users/jonat/OneDrive/Escritorio/testeo.txt", "w")
-    NewFile.write(entrada + os.linesep)
-    NewFile.close()
+    NewFile = filedialog.asksaveasfilename(initialdir="/", title="Save as", filetypes=(("Text files","*.txt"),("json files", "*.json"),("all files","*.*")))
+    if NewFile != "":
+        archi1=open(NewFile+".txt", "w", encoding="utf-8")
+        archi1.write(Caja.get("1.0", END))
+        archi1.close()
+        r = mb.askokcancel("Mensaje", "Archivo Guardo!")
+    #NewFile = open("C:/Users/jonat/OneDrive/Escritorio/testeo.txt", "w")
+    #NewFile.write(entrada + os.linesep)
+    #NewFile.close()
 
 def TemasAyuda():
     EtiquetaTemasAyuda.grid(row=1, column=0)

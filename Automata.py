@@ -273,7 +273,6 @@ class Automata:
             elif token.lexema == "Tangente":
                 print("se encontro una tangente")
 
-
     def imprimir_tokens(self):
         print('-'*31)
         print("| {:<4} | {:<7} | {:<10} |".format('Fila','Columna','Lexema'))    
