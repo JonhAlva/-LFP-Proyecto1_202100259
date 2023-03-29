@@ -252,17 +252,6 @@ class Automata:
         #OPERACIONES DENUVEO Y TAL
         # RETURN AJSJASJAS
         # 
-    def imprimir_tokens(self):
-        print('-'*31)
-        print("| {:<4} | {:<7} | {:<10} |".format('Fila','Columna','Lexema'))    
-        print('-'*31)
-        for token in self.tabla_tokens:
-            print ("| {:<4} | {:<7} | {:<10} |".format(token.fila, token.columna, token.lexema))
-
-    def imprimir_lexemas(self):
-        for token in self.tabla_tokens:
-            print(token.lexema)
-
     def detectar_operacion(self):
         for token in self.tabla_tokens:
             if token.lexema == "Suma":
@@ -283,4 +272,32 @@ class Automata:
                 print("se encontro un coseno")
             elif token.lexema == "Tangente":
                 print("se encontro una tangente")
+
+
+    def imprimir_tokens(self):
+        print('-'*31)
+        print("| {:<4} | {:<7} | {:<10} |".format('Fila','Columna','Lexema'))    
+        print('-'*31)
+        for token in self.tabla_tokens:
+            print ("| {:<4} | {:<7} | {:<10} |".format(token.fila, token.columna, token.lexema))
+        self.tabla_tokens = []
+        self.cadena = " "
+        self.fila = 0
+        self.columna = 0
+        self.estado_actual = 0
+        self.estado_anterior = 0
+        self.estados_aceptacion = [9]
+        self.token = " "
+
+    def imprimir_lexemas(self):
+        for token in self.tabla_tokens:
+            print(token.lexema)
+        self.tabla_tokens = []
+        self.cadena = ""
+        self.fila = 0
+        self.columna = 0
+        self.estado_actual = 0
+        self.estado_anterior = 0
+        self.estados_aceptacion = [9]
+        self.token = ""
 

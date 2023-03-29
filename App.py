@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox as mb
 from Automata import Automata
+from Token import Token
 from tkinter import filedialog
 import time
 import os
@@ -21,30 +22,42 @@ Caja = Text(ventana2,width=50,height=20, bd=4, selectbackground="red")
 def Abrir():
     print("ABIERTO...")
     global filename
+    #Aqui se limpia el archivo que ya lleva "cargado"
+    filename = " "
+    #Aqui se abre nuevamente el archivo
     filename=filedialog.askopenfilename(filetype="/", title="Select a file", filetypes=(("Text files","*.txt"),("json files", "*.json"),("all files","*.*")))
     if filename != " ":
+        #Aqui se lee el archivo que se carga otra vez
         archivo = open(filename, "r")
         Codificado = archivo.read()
         archivo.close() 
-        print(Codificado)
+        #print(Codificado)
             #print(Codificado)
         Caja.insert(INSERT, Codificado)
-
-        r = mb.askokcancel("Mensjae", "Archivo abierto exitosamente")
+        r = mb.askokcancel("Mensaje", "Archivo abierto exitosamente")    
 
 def Analizar():
     #entrada = Caja.get("1.0","end")
     #print(entrada)
-    entrada = open(filename, "r").read()
-    resultado = autom.analizar(entrada)
-    #print(entrada)
+    entrada = Caja.get("1.0","end")
+    #entrada = open(filename, "r").read()
+    autom.analizar(entrada)
+    print("+++++++++++++++++++")
+    print(entrada)
+    print("+++++++++++++++++++")
     #autom.imprimir_tokens()
-    autom.imprimir_lexemas()
     print("------------------------------")
     autom.detectar_operacion()
+    print("------------------------------")
+    autom.imprimir_lexemas()
+
 
 def Salir():
     quit()    
+
+def Limpiar():
+    print("Limpiando")
+    Caja.delete("1.0", "end")   
 
 def GuardarComo():
     print("Guardado como...")
@@ -77,6 +90,7 @@ def Guardar():
 
 
 #DECLARANDO LOS BOTONES-------------------------------------------------------
+botonLimpiar = Button(ventana2, text="Limpiar", width=20, height=2, bg="white", command=Limpiar)
 botonGuardar = Button(ventana2, text="Guardar", width=20, height=2, bg="lightgreen", command=Guardar)
 botonAbrir = Button(ventana2, text="Abrir", width=20, height=2, bg="purple", foreground="white", command=Abrir)
 botonGuardarComo = Button(ventana2, text="Guardar Como", width=20, height=2, bg="lightgreen", command=GuardarComo)
@@ -94,6 +108,7 @@ botonAbrir.grid(row=1, column=1, padx=10, pady=10)
 botonGuardar.grid(row=2, column=1, padx=10, pady=10)
 botonGuardarComo.grid(row=3, column=1, padx=10, pady=10)
 botonAnalizar.grid(row=0, column=1, padx=10, pady=10)
+botonLimpiar.grid(row=0, column=2, padx=10, pady=10)
 botonErrores.grid(row=4, column=1, padx=10, pady=10)
 botonSalir.grid(row=4, column=2, padx=10, pady=10)
 botonManualU.grid(row=1, column=2, padx=10, pady=10)
